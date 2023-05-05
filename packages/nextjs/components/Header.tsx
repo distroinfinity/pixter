@@ -1,27 +1,28 @@
-import React, { useCallback, useRef, useState } from "react";
+// import React, { useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { Bars3Icon, BugAntIcon } from "@heroicons/react/24/outline";
+// import { useRouter } from "next/router";
+// import { Bars3Icon, BugAntIcon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
-import { useOutsideClick } from "~~/hooks/scaffold-eth";
 
-const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
-  const router = useRouter();
-  const isActive = router.pathname === href;
+// import { useOutsideClick } from "~~/hooks/scaffold-eth";
 
-  return (
-    <Link
-      href={href}
-      passHref
-      className={`${
-        isActive ? "bg-primary shadow-md" : ""
-      } hover:bg-primary hover:shadow-md focus:bg-primary py-1.5 px-3 text-sm rounded-full gap-2`}
-    >
-      {children}
-    </Link>
-  );
-};
+// const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+//   const router = useRouter();
+//   const isActive = router.pathname === href;
+
+//   return (
+//     <Link
+//       href={href}
+//       passHref
+//       className={`${
+//         isActive ? "bg-primary shadow-md" : ""
+//       } hover:bg-primary hover:shadow-md focus:bg-primary py-1.5 px-3 text-sm rounded-full gap-2`}
+//     >
+//       {children}
+//     </Link>
+//   );
+// };
 
 /**
  * Site header
