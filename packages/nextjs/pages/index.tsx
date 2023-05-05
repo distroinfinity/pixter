@@ -15,8 +15,8 @@ const Home: NextPage = () => {
         <button className="btn btn-secondary">Mint New Avatar ✨</button>
       </Link>
       <div className="flex flex-row flex-wrap mx-auto mb-10">
-        <Link href="/edit/1">
-          <div className="card card-compact w-11/12 lg:w-80 bg-base-100 shadow-xl p-3 mx-auto my-0 mt-10 lg:mx-4 items-center">
+        <Link href="/edit/1" className="mx-auto my-0 mt-10 lg:mx-4">
+          <div className="card card-compact w-11/12 lg:w-80 bg-base-100 shadow-xl p-3 items-center">
             <Avatar
               style={{ width: "100%", height: "100%" }}
               avatarStyle="Transparent"
@@ -35,8 +35,8 @@ const Home: NextPage = () => {
           </div>
         </Link>
 
-        <Link href="/edit/2">
-          <div className="card card-compact w-11/12 lg:w-80 bg-base-100 shadow-xl p-3 mx-auto my-0 mt-10 lg:mx-4 items-center">
+        <Link href="/edit/2" className="mx-auto my-0 mt-10 lg:mx-4">
+          <div className="card card-compact w-11/12 lg:w-80 bg-base-100 shadow-xl p-3 items-center">
             <Avatar
               style={{ width: "100%", height: "100%" }}
               avatarStyle="Transparent"
@@ -56,8 +56,8 @@ const Home: NextPage = () => {
           </div>
         </Link>
 
-        <Link href="/edit/3">
-          <div className="card card-compact w-11/12 lg:w-80 bg-base-100 shadow-xl p-3 mx-auto my-0 mt-10 lg:mx-4 items-center">
+        <Link href="/edit/3" className="mx-auto my-0 mt-10 lg:mx-4">
+          <div className="card card-compact w-11/12 lg:w-80 bg-base-100 shadow-xl p-3 items-center">
             <Avatar
               style={{ width: "100%", height: "100%" }}
               avatarStyle="Transparent"
