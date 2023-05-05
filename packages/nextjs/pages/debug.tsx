@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Head from "next/head";
 import type { NextPage } from "next";
 import { ContractUI } from "~~/components/scaffold-eth";
 import { ContractName } from "~~/utils/scaffold-eth/contract";
@@ -10,6 +11,11 @@ const Debug: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <title>Pixter: Debug</title>
+        <meta name="description" content="Create your very own Web3 Avatar" />
+      </Head>
+
       <div className="flex flex-col gap-y-6 lg:gap-y-8 py-8 lg:py-12 justify-center items-center">
         {contractNames.length === 0 ? (
           <p className="text-3xl mt-14">No contracts found!</p>
