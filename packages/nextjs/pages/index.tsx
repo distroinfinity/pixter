@@ -11,7 +11,7 @@ const Home: NextPage = () => {
   const response = useScaffoldContractRead({
     contractName: "Pixters",
     functionName: "tokenURI",
-    args: [1],
+    args: [2],
   });
   const tokenURI = response.data;
   console.log("return", tokenURI);

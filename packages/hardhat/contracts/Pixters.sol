@@ -17,7 +17,7 @@ contract Pixters is ERC721, Ownable {
   Counters.Counter private _tokenIds;
 
   // State Variables
-  mapping(uint256 => string) _avatarStyle;
+  mapping(uint256 => string) _nftName;
   mapping(uint256 => string) _topType;
   mapping(uint256 => string) _accessoriesType;
   mapping(uint256 => string) _hairColor;
@@ -33,7 +33,7 @@ contract Pixters is ERC721, Ownable {
 
   // functions
   function mintItem(
-    string memory avatarStyle,
+    string memory name,
     string memory topType,
     string memory accessoriesType,
     string memory hairColor,
@@ -49,7 +49,7 @@ contract Pixters is ERC721, Ownable {
     uint256 id = _tokenIds.current();
     _mint(msg.sender, id);
 
-    _avatarStyle[id] = avatarStyle;
+    _nftName[id] = name;
     _topType[id] = topType;
     _accessoriesType[id] = accessoriesType;
     _hairColor[id] = hairColor;
@@ -64,12 +64,58 @@ contract Pixters is ERC721, Ownable {
     return id;
   }
 
+  function editAvatar(
+    uint256 _id,
+    string memory topType,
+    string memory accessoriesType,
+    string memory hairColor,
+    string memory facialHairType,
+    string memory clotheType,
+    string memory clotheColor,
+    string memory eyeType,
+    string memory eyebrowType,
+    string memory mouthType,
+    string memory skinColor
+  ) public {
+    require(msg.sender == ownerOf(_id), "You are not the owner of this NFT");
+    if (bytes(topType).length > 0) {
+      _topType[_id] = topType;
+    }
+    if (bytes(accessoriesType).length > 0) {
+      _accessoriesType[_id] = accessoriesType;
+    }
+    if (bytes(hairColor).length > 0) {
+      _hairColor[_id] = hairColor;
+    }
+    if (bytes(facialHairType).length > 0) {
+      _facialHairType[_id] = facialHairType;
+    }
+    if (bytes(clotheType).length > 0) {
+      _clotheType[_id] = clotheType;
+    }
+    if (bytes(clotheColor).length > 0) {
+      _clotheColor[_id] = clotheColor;
+    }
+    if (bytes(eyeType).length > 0) {
+      _eyeType[_id] = eyeType;
+    }
+    if (bytes(eyebrowType).length > 0) {
+      _eyebrowType[_id] = eyebrowType;
+    }
+    if (bytes(mouthType).length > 0) {
+      _mouthType[_id] = mouthType;
+    }
+    if (bytes(skinColor).length > 0) {
+      _skinColor[_id] = skinColor;
+    }
+  }
+
+  // https://avataaars.io/?avatarStyle=Circle&topType=LongHairFro&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Gray01&graphicType=Skull&eyeType=Hearts&eyebrowType=RaisedExcitedNatural&mouthType=Eating&skinColor=Pale
+
   function getQueryString(uint256 id) private view returns (string memory) {
     string memory queryParams = string(
       abi.encodePacked(
-        "?avatarStyle=",
-        _avatarStyle[id],
-        "&topType=",
+        "?topType=",
         _topType[id],
         "&accessoriesType=",
         _accessoriesType[id],
@@ -94,29 +140,41 @@ contract Pixters is ERC721, Ownable {
     return queryParams;
   }
 
-  
   function getAttributes(uint256 id) private view returns (string memory) {
     // adding a handful of them, baad mai fix it
     string memory attributes = string(
       abi.encodePacked(
-        '{ "trait_type": "avatarStyle", "value" :"',
-        _avatarStyle[id],
+        '{ "trait_type": "hairColor", "value" :"',
+        _hairColor[id],
         '" }, {"trait_type": "topType", "value" :"',
         _topType[id],
         '"}, {"trait_type": "accessoriesType", "value" :"',
         _accessoriesType[id],
-        '"}  '
+        '"}, {"trait_type": "facialHairType", "value" :"',
+        _facialHairType[id],
+        '"}, {"trait_type": "clotheType", "value" :"',
+        _clotheType[id],
+        '"}, {"trait_type": "clotheColor", "value" :"',
+        _clotheColor[id],
+        '"}, {"trait_type": "eyeType", "value" :"',
+        _eyeType[id],
+        '"}, {"trait_type": "eyebrowType", "value" :"',
+        _eyebrowType[id],
+        '"},{"trait_type": "mouthType", "value" :"',
+        _mouthType[id],
+        '"},{"trait_type": "skinColor", "value" :"',
+        _skinColor[id],
+        '"} '
       )
     );
 
     return attributes;
   }
 
-  
   function tokenURI(uint256 id) public view override returns (string memory) {
     require(_exists(id), "not exist");
 
-    string memory name = string(abi.encodePacked("Pixters #", id.toString()));
+    string memory name = string(abi.encodePacked(_nftName[id]));
     string memory description = string(abi.encodePacked("Coolest pfp in town"));
     string memory baseURI = "https://avataaars.io/";
     string memory queryParams = getQueryString(id);
