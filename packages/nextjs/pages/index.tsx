@@ -1,9 +1,25 @@
+import { useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Avatar from "avataaars";
 import type { NextPage } from "next";
+import { BugAntIcon } from "@heroicons/react/24/outline";
+import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
 
 const Home: NextPage = () => {
+  //just for testing
+  const response = useScaffoldContractRead({
+    contractName: "Pixters",
+    functionName: "tokenURI",
+    args: [1],
+  });
+  const tokenURI = response.data;
+  console.log("return", tokenURI);
+  if (!tokenURI) return;
+  const jsonManifestString = atob(tokenURI.substring(29));
+  console.log("jsonManifestString", jsonManifestString);
+  const jsonManifest = JSON.parse(jsonManifestString);
+  console.log("jsonManifest", jsonManifest);
   return (
     <>
       <Head>
