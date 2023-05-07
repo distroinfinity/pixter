@@ -39,6 +39,10 @@ p {
   background-color: var(--scrollbar-color, #888);
 }
 
+::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0);
+}
+
 [data-theme="customLight"] {
   --scrollbar-color: #aaaa;
 }
