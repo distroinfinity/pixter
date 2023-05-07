@@ -1,25 +1,26 @@
-import { useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Avatar from "avataaars";
 import type { NextPage } from "next";
-import { BugAntIcon } from "@heroicons/react/24/outline";
-import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
+
+// import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
 
 const Home: NextPage = () => {
-  //just for testing
-  const response = useScaffoldContractRead({
-    contractName: "Pixters",
-    functionName: "tokenURI",
-    args: [2],
-  });
-  const tokenURI = response.data;
-  console.log("return", tokenURI);
-  if (!tokenURI) return;
-  const jsonManifestString = atob(tokenURI.substring(29));
-  console.log("jsonManifestString", jsonManifestString);
-  const jsonManifest = JSON.parse(jsonManifestString);
-  console.log("jsonManifest", jsonManifest);
+  // Just for testing
+
+  // const response = useScaffoldContractRead({
+  //   contractName: "Pixters",
+  //   functionName: "tokenURI",
+  //   args: [2],
+  // });
+  // const tokenURI = response.data;
+  // console.log("return", tokenURI);
+  // if (!tokenURI) return;
+  // const jsonManifestString = atob(tokenURI.substring(29));
+  // console.log("jsonManifestString", jsonManifestString);
+  // const jsonManifest = JSON.parse(jsonManifestString);
+  // console.log("jsonManifest", jsonManifest);
+
   return (
     <>
       <Head>
@@ -32,7 +33,7 @@ const Home: NextPage = () => {
       </Link>
       <div className="flex flex-row flex-wrap mx-auto mb-10">
         <Link href="/edit/1" className="mx-auto my-0 mt-10 lg:mx-4">
-          <div className="card card-compact w-11/12 lg:w-80 bg-base-100 shadow-xl p-3 items-center">
+          <div className="card card-compact w-11/12 lg:w-80 bg-base-100 shadow-xl p-3 items-center ml-3 lg:m-0">
             <Avatar
               style={{ width: "100%", height: "100%" }}
               avatarStyle="Transparent"
@@ -52,7 +53,7 @@ const Home: NextPage = () => {
         </Link>
 
         <Link href="/edit/2" className="mx-auto my-0 mt-10 lg:mx-4">
-          <div className="card card-compact w-11/12 lg:w-80 bg-base-100 shadow-xl p-3 items-center">
+          <div className="card card-compact w-11/12 lg:w-80 bg-base-100 shadow-xl p-3 items-center ml-3 lg:m-0">
             <Avatar
               style={{ width: "100%", height: "100%" }}
               avatarStyle="Transparent"
@@ -73,7 +74,7 @@ const Home: NextPage = () => {
         </Link>
 
         <Link href="/edit/3" className="mx-auto my-0 mt-10 lg:mx-4">
-          <div className="card card-compact w-11/12 lg:w-80 bg-base-100 shadow-xl p-3 items-center">
+          <div className="card card-compact w-11/12 lg:w-80 bg-base-100 shadow-xl p-3 items-center ml-3 lg:m-0">
             <Avatar
               style={{ width: "100%", height: "100%" }}
               avatarStyle="Transparent"
