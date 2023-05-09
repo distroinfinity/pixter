@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Avatar from "avataaars";
 import type { NextPage } from "next";
 import { CheckIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
+import { Pallette } from "~~/components/editAvatar/Pallette";
 import { notification } from "~~/utils/scaffold-eth";
 
 const Edit: NextPage = () => {
@@ -12,14 +13,19 @@ const Edit: NextPage = () => {
 
   const [avatar, setAvatar] = useState({
     avatarStyle: "Transparent",
-    topType: "NoHair",
-    accessoriesType: "Blank",
-    facialHairType: "Blank",
-    clotheType: "BlazerShirt",
-    eyeType: "Default",
-    eyebrowType: "Default",
-    mouthType: "Default",
     skinColor: "Light",
+    topType: "NoHair",
+    hatColor: "Black",
+    hairColor: "BrownDark",
+    eyebrowType: "Default",
+    eyeType: "Default",
+    accessoriesType: "Blank",
+    mouthType: "Default",
+    facialHairType: "Blank",
+    facialHairColor: "BrownDark",
+    clotheType: "ShirtCrewNeck",
+    clotheColor: "Black",
+    graphicType: "Bat",
   });
 
   const [editName, setEditName] = useState(false);
@@ -50,7 +56,7 @@ const Edit: NextPage = () => {
         <meta name="description" content="Create your very own Web3 Avatar" />
       </Head>
 
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center w-full">
         <Avatar {...avatar} />
         {editName ? (
           <div className="mt-6 flex gap-2">
@@ -91,6 +97,9 @@ const Edit: NextPage = () => {
         >
           {tokenId === "0" ? "Mint ✨" : "Update 🚀"}
         </button>
+        <div className="mt-6 px-3 w-full">
+          <Pallette avatar={avatar} setAvatar={setAvatar} />
+        </div>
       </div>
     </>
   );
