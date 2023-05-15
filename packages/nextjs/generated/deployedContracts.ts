@@ -5,7 +5,7 @@ const contracts = {
       chainId: "31337",
       contracts: {
         Pixters: {
-          address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+          address: "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
           abi: [
             {
               inputs: [
@@ -153,69 +153,6 @@ const contracts = {
               inputs: [
                 {
                   internalType: "uint256",
-                  name: "_id",
-                  type: "uint256",
-                },
-                {
-                  internalType: "string",
-                  name: "topType",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "accessoriesType",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "hairColor",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "facialHairType",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "clotheType",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "clotheColor",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "eyeType",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "eyebrowType",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "mouthType",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "skinColor",
-                  type: "string",
-                },
-              ],
-              name: "editAvatar",
-              outputs: [],
-              stateMutability: "nonpayable",
-              type: "function",
-            },
-            {
-              inputs: [
-                {
-                  internalType: "uint256",
                   name: "tokenId",
                   type: "uint256",
                 },
@@ -258,8 +195,18 @@ const contracts = {
             {
               inputs: [
                 {
+                  internalType: "uint256",
+                  name: "id",
+                  type: "uint256",
+                },
+                {
                   internalType: "string",
                   name: "name",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "skinColor",
                   type: "string",
                 },
                 {
@@ -269,7 +216,7 @@ const contracts = {
                 },
                 {
                   internalType: "string",
-                  name: "accessoriesType",
+                  name: "hatColor",
                   type: "string",
                 },
                 {
@@ -279,7 +226,32 @@ const contracts = {
                 },
                 {
                   internalType: "string",
+                  name: "eyebrowType",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "eyeType",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "accessoriesType",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "mouthType",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
                   name: "facialHairType",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "facialHairColor",
                   type: "string",
                 },
                 {
@@ -294,22 +266,7 @@ const contracts = {
                 },
                 {
                   internalType: "string",
-                  name: "eyeType",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "eyebrowType",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "mouthType",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "skinColor",
+                  name: "graphicType",
                   type: "string",
                 },
               ],
@@ -543,7 +500,7 @@ const contracts = {
       chainId: "80001",
       contracts: {
         Pixters: {
-          address: "0xd34b15Ec3Aef7F287a3bBe48cb2C4Bf65Bf29740",
+          address: "0xa4c979019318dd7C55B550e7cdafFf849D2A9085",
           abi: [
             {
               inputs: [
@@ -696,6 +653,16 @@ const contracts = {
                 },
                 {
                   internalType: "string",
+                  name: "name",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "skinColor",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
                   name: "topType",
                   type: "string",
                 },
@@ -741,7 +708,17 @@ const contracts = {
                 },
                 {
                   internalType: "string",
-                  name: "skinColor",
+                  name: "hatColor",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "facialHairColor",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "graphicType",
                   type: "string",
                 },
               ],
@@ -802,12 +779,17 @@ const contracts = {
                 },
                 {
                   internalType: "string",
+                  name: "skinColor",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
                   name: "topType",
                   type: "string",
                 },
                 {
                   internalType: "string",
-                  name: "accessoriesType",
+                  name: "hatColor",
                   type: "string",
                 },
                 {
@@ -817,7 +799,32 @@ const contracts = {
                 },
                 {
                   internalType: "string",
+                  name: "eyebrowType",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "eyeType",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "accessoriesType",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "mouthType",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
                   name: "facialHairType",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "facialHairColor",
                   type: "string",
                 },
                 {
@@ -832,22 +839,7 @@ const contracts = {
                 },
                 {
                   internalType: "string",
-                  name: "eyeType",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "eyebrowType",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "mouthType",
-                  type: "string",
-                },
-                {
-                  internalType: "string",
-                  name: "skinColor",
+                  name: "graphicType",
                   type: "string",
                 },
               ],
