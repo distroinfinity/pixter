@@ -42,7 +42,7 @@ export const Footer = () => {
               </a>
               🏗 |{" "}
               <a
-                href="https://github.com/kevinjoshi46b/scaffold-eth-2/tree/template"
+                href="https://github.com/distroinfinity/pixster"
                 target="_blank"
                 rel="noreferrer"
                 className="underline underline-offset-2"
