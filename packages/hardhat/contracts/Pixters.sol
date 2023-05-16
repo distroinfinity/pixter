@@ -17,6 +17,7 @@ contract Pixters is ERC721, Ownable {
   Counters.Counter private _tokenIds;
 
   // State Variables
+  mapping(uint256 => string) _nftName;
   mapping(uint256 => string) _avatarStyle;
   mapping(uint256 => string) _skinColor;
   mapping(uint256 => string) _topType;
@@ -31,14 +32,13 @@ contract Pixters is ERC721, Ownable {
   mapping(uint256 => string) _clotheType;
   mapping(uint256 => string) _clotheColor;
   mapping(uint256 => string) _graphicType;
-  mapping(uint256 => string) _nftName;
 
-  constructor(address _owner) public ERC721("Pixters", "PIXIS") {}
+  constructor(address _owner) ERC721("Pixters", "PIXIS") {}
 
   // functions
   function mintItem(
     string memory name,
-    // string memory avatarStyle,
+    string memory avatarStyle,
     string memory skinColor,
     string memory topType,
     string memory hatColor,
@@ -58,7 +58,7 @@ contract Pixters is ERC721, Ownable {
     _mint(msg.sender, id);
 
     _nftName[id] = name;
-    _avatarStyle[id] = "Transparent";
+    _avatarStyle[id] = avatarStyle;
     _skinColor[id] = skinColor;
     _topType[id] = topType;
     _hatColor[id] = hatColor;
@@ -79,36 +79,57 @@ contract Pixters is ERC721, Ownable {
   function editAvatar(
     uint256 _id,
     string memory name,
-    // string memory avatarStyle,
+    string memory avatarStyle,
     string memory skinColor,
     string memory topType,
-    string memory accessoriesType,
+    string memory hatColor,
     string memory hairColor,
+    string memory eyebrowType,
+    string memory eyeType,
+    string memory accessoriesType,
+    string memory mouthType,
     string memory facialHairType,
+    string memory facialHairColor,
     string memory clotheType,
     string memory clotheColor,
-    string memory eyeType,
-    string memory eyebrowType,
-    string memory mouthType,
-    string memory hatColor,
-    string memory facialHairColor,
     string memory graphicType
   ) public {
     require(msg.sender == ownerOf(_id), "You are not the owner of this NFT");
     if (bytes(name).length > 0) {
       _nftName[_id] = name;
     }
+    if (bytes(avatarStyle).length > 0) {
+      _avatarStyle[_id] = avatarStyle;
+    }
+    if (bytes(skinColor).length > 0) {
+      _skinColor[_id] = skinColor;
+    }
     if (bytes(topType).length > 0) {
       _topType[_id] = topType;
     }
-    if (bytes(accessoriesType).length > 0) {
-      _accessoriesType[_id] = accessoriesType;
+    if (bytes(hatColor).length > 0) {
+      _hatColor[_id] = hatColor;
     }
     if (bytes(hairColor).length > 0) {
       _hairColor[_id] = hairColor;
     }
+    if (bytes(eyebrowType).length > 0) {
+      _eyebrowType[_id] = eyebrowType;
+    }
+    if (bytes(eyeType).length > 0) {
+      _eyeType[_id] = eyeType;
+    }
+    if (bytes(accessoriesType).length > 0) {
+      _accessoriesType[_id] = accessoriesType;
+    }
+    if (bytes(mouthType).length > 0) {
+      _mouthType[_id] = mouthType;
+    }
     if (bytes(facialHairType).length > 0) {
       _facialHairType[_id] = facialHairType;
+    }
+    if (bytes(facialHairColor).length > 0) {
+      _facialHairColor[_id] = facialHairColor;
     }
     if (bytes(clotheType).length > 0) {
       _clotheType[_id] = clotheType;
@@ -116,61 +137,41 @@ contract Pixters is ERC721, Ownable {
     if (bytes(clotheColor).length > 0) {
       _clotheColor[_id] = clotheColor;
     }
-    if (bytes(eyeType).length > 0) {
-      _eyeType[_id] = eyeType;
-    }
-    if (bytes(eyebrowType).length > 0) {
-      _eyebrowType[_id] = eyebrowType;
-    }
-    if (bytes(mouthType).length > 0) {
-      _mouthType[_id] = mouthType;
-    }
-    if (bytes(skinColor).length > 0) {
-      _skinColor[_id] = skinColor;
-    }
-    if (bytes(hatColor).length > 0) {
-      _hatColor[_id] = hatColor;
-    }
-    if (bytes(facialHairColor).length > 0) {
-      _facialHairColor[_id] = facialHairColor;
-    }
     if (bytes(graphicType).length > 0) {
       _graphicType[_id] = graphicType;
     }
   }
 
-  // https://avataaars.io/?avatarStyle=Circle&topType=LongHairFro&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Gray01&graphicType=Skull&eyeType=Hearts&eyebrowType=RaisedExcitedNatural&mouthType=Eating&skinColor=Pale
-
   function getQueryString(uint256 id) private view returns (string memory) {
     string memory queryParams = string(
       abi.encodePacked(
-        "?topType=",
-        _topType[id],
-        "&accessoriesType=",
-        _accessoriesType[id],
-        "&hairColor=",
-        _hairColor[id],
-        "&facialHairType=",
-        _facialHairType[id],
-        "&clotheType=",
-        _clotheType[id],
-        "&clotheColor",
-        _clotheColor[id],
-        "&eyeType=",
-        _eyeType[id],
-        "&eyebrowType=",
-        _eyebrowType[id],
-        "&mouthType=",
-        _mouthType[id],
-        "&skinColor=",
-        _skinColor[id],
         "&avatarStyle=",
         _avatarStyle[id],
+        "&skinColor=",
+        _skinColor[id],
+        "?topType=",
+        _topType[id],
         "&hatColor=",
         _hatColor[id],
-        "&facialHairColor",
+        "&hairColor=",
+        _hairColor[id],
+        "&eyebrowType=",
+        _eyebrowType[id],
+        "&eyeType=",
+        _eyeType[id],
+        "&accessoriesType=",
+        _accessoriesType[id],
+        "&mouthType=",
+        _mouthType[id],
+        "&facialHairType=",
+        _facialHairType[id],
+        "&facialHairColor=",
         _facialHairColor[id],
-        "&graphicType",
+        "&clotheType=",
+        _clotheType[id],
+        "&clotheColor=",
+        _clotheColor[id],
+        "&graphicType=",
         _graphicType[id]
       )
     );
@@ -181,32 +182,32 @@ contract Pixters is ERC721, Ownable {
     // adding a handful of them, baad mai fix it
     string memory attributes = string(
       abi.encodePacked(
-        '{ "trait_type": "hairColor", "value" :"',
-        _hairColor[id],
+        '{ "trait_type": "avatarStyle", "value" :"',
+        _avatarStyle[id],
+        '"},{"trait_type": "skinColor", "value" :"',
+        _skinColor[id],
         '" }, {"trait_type": "topType", "value" :"',
         _topType[id],
+        '"} ,{"trait_type": "hatColor", "value" :"',
+        _hatColor[id],
+        '"},{"trait_type": "hairColor", "value" :"',
+        _hairColor[id],
+        '"}, {"trait_type": "eyebrowType", "value" :"',
+        _eyebrowType[id],
+        '"}, {"trait_type": "eyeType", "value" :"',
+        _eyeType[id],
         '"}, {"trait_type": "accessoriesType", "value" :"',
         _accessoriesType[id],
+        '"},{"trait_type": "mouthType", "value" :"',
+        _mouthType[id],
         '"}, {"trait_type": "facialHairType", "value" :"',
         _facialHairType[id],
+        '"},{"trait_type": "facialHairColor", "value" :"',
+        _facialHairColor[id],
         '"}, {"trait_type": "clotheType", "value" :"',
         _clotheType[id],
         '"}, {"trait_type": "clotheColor", "value" :"',
         _clotheColor[id],
-        '"}, {"trait_type": "eyeType", "value" :"',
-        _eyeType[id],
-        '"}, {"trait_type": "eyebrowType", "value" :"',
-        _eyebrowType[id],
-        '"},{"trait_type": "mouthType", "value" :"',
-        _mouthType[id],
-        '"},{"trait_type": "skinColor", "value" :"',
-        _skinColor[id],
-        '"},{"trait_type": "avatarStyle", "value" :"',
-        _avatarStyle[id],
-        '"} ,{"trait_type": "hatColor", "value" :"',
-        _hatColor[id],
-        '"},{"trait_type": "facialHairColor", "value" :"',
-        _facialHairColor[id],
         '"},{"trait_type": "graphicType", "value" :"',
         _graphicType[id],
         '"} '
