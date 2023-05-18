@@ -41,6 +41,7 @@ const Home: NextPage = () => {
         newAvatar["id"] = parseInt(ids[id]);
         const rawData = await providerContract.tokenURI(newAvatar["id"]);
         const data = JSON.parse(atob(rawData.substring(29)));
+        console.log("avatar data", ids[id], data);
         newAvatar["name"] = data["name"];
         const obj = {};
         data["attributes"].map(att => {
@@ -67,7 +68,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Pixter: Home</title>
         <meta name="description" content="Create your very own Web3 Avatar" />
-        <link rel="shortcut icon" href="/pixters.jpeg" />
+        <link rel="shortcut icon" href="/pixters.png" />
       </Head>
 
       {writeDisabled ? (

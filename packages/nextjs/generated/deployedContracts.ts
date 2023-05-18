@@ -5,7 +5,7 @@ const contracts = {
       chainId: "80001",
       contracts: {
         Pixters: {
-          address: "0x46c6B66bdb91B06CB4d176B1b9F5ab2305B08ae9",
+          address: "0xcb65059572165773684ef5Fe318bA301bF299583",
           abi: [
             {
               inputs: [
