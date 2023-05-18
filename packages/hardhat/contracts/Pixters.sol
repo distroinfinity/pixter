@@ -155,11 +155,11 @@ contract Pixters is ERC721, Ownable {
   function getQueryString(uint256 id) private view returns (string memory) {
     string memory queryParams = string(
       abi.encodePacked(
-        "&avatarStyle=",
+        "?avatarStyle=",
         _avatarStyle[id],
         "&skinColor=",
         _skinColor[id],
-        "?topType=",
+        "&topType=",
         _topType[id],
         "&hatColor=",
         _hatColor[id],
