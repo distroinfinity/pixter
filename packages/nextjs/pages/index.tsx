@@ -71,7 +71,7 @@ const Home: NextPage = () => {
   const handleTweet = (id: any) => {
     console.log("id tweet", id);
     const link1 = `${openseaBaseURL + id}`;
-    const link2 = "https://pixster.vercel.app/";
+    const link2 = "https://pixters.vercel.app/";
     const text = `Checkout my coolest Avatar at: ${link1}\nMint yours at: ${link2}`;
 
     const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
@@ -82,7 +82,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Pixter: Home</title>
+        <title>Pixters: Home</title>
         <meta name="description" content="Create your very own NFT Avatars" />
         <link rel="shortcut icon" href="/pixters.png" />
       </Head>
@@ -124,7 +124,7 @@ const Home: NextPage = () => {
                           onClick={() => {
                             handleTweet(avatar["id"]);
                           }}
-                          className="btn btn-outline btn-success gap-2 ml-2"
+                          className="btn btn-outline btn-info gap-2 ml-2"
                         >
                           <Image width={25} height={25} src={"/twitter.png"}></Image>
                         </button>

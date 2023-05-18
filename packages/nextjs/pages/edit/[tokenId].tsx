@@ -122,7 +122,7 @@ const Edit: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Pixter: Edit</title>
+        <title>Pixters: Edit</title>
         <meta name="description" content="Create your very own NFT Avatars" />
         <link rel="shortcut icon" href="/pixters.png" />
       </Head>
@@ -137,23 +137,26 @@ const Edit: NextPage = () => {
         )}
         {editName ? (
           <div className="mt-6 flex gap-2">
-            <input
-              type="text"
-              placeholder="Enter Name"
-              className="input input-bordered w-full max-w-xs"
-              value={name}
-              onChange={e => {
-                setName(e.target.value);
-              }}
-              onKeyDown={e => {
-                if (e.key === "Enter") {
-                  nameUpdate();
-                }
-              }}
-            />
-            <button className="btn btn-secondary" onClick={() => nameUpdate()}>
+            <div>
+              <input
+                type="text"
+                placeholder="Enter Name"
+                className="input input-bordered w-full max-w-xs"
+                value={name}
+                onChange={e => {
+                  setName(e.target.value);
+                }}
+                // onKeyDown={e => {
+                //   if (e.key === "Enter") {
+                //     nameUpdate();
+                //   }
+                // }}
+              />
+              <div className="p-0">{/* <p className="m-0 text-gray-300">press enter when done</p> */}</div>
+            </div>
+            {/* <button className="btn btn-secondary" onClick={() => nameUpdate()}>
               <CheckIcon className="h-4 w-4" />
-            </button>
+            </button> */}
           </div>
         ) : avatar ? (
           <div className="mt-6 flex gap-2">
@@ -173,7 +176,7 @@ const Edit: NextPage = () => {
             <button
               className="btn btn-secondary mt-4"
               onClick={() => {
-                if (name === "" || editName) {
+                if (name === "") {
                   notification.error("Avatar name not entered!");
                 } else {
                   w1();
@@ -186,7 +189,7 @@ const Edit: NextPage = () => {
             <button
               className="btn btn-secondary mt-4"
               onClick={() => {
-                if (name === "" || editName) {
+                if (name === "") {
                   notification.error("Avatar name not entered!");
                 } else {
                   w2();

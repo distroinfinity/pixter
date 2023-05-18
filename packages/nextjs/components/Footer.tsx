@@ -51,6 +51,27 @@ export const Footer = () => {
               </a>
               📝
             </div>
+
+            <div>
+              By{" "}
+              <a
+                href="https://twitter.com/distroinfinity"
+                target="_blank"
+                rel="noreferrer"
+                className="underline underline-offset-2"
+              >
+                Manu
+              </a>{" "}
+              & {" "}
+              <a
+                href="https://twitter.com/kevinjoshi46b"
+                target="_blank"
+                rel="noreferrer"
+                className="underline underline-offset-2"
+              >
+                Kevin
+              </a>
+            </div>
           </div>
         </ul>
       </div>

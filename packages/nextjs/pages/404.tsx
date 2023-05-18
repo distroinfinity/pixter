@@ -5,7 +5,7 @@ const PageNotFound: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Pixter: 404</title>
+        <title>Pixters: 404</title>
         <meta name="description" content="Create your very own NFT Avatars" />
         <link rel="shortcut icon" href="/pixters.png" />
 
