@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import Avatar from "avataaars";
 import type { NextPage } from "next";
+import { useWaitForTransaction } from "wagmi";
 import { CheckIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
 import { Pallette } from "~~/components/editAvatar/Pallette";
 import { useScaffoldContractRead, useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
@@ -19,11 +20,21 @@ const Edit: NextPage = () => {
 
   const [oldAvatar, setOldAvatar] = useState();
 
-  const { writeAsync: w1 } = useScaffoldContractWrite({
+  const { data: w1d, writeAsync: w1 } = useScaffoldContractWrite({
     contractName: "Pixters",
     functionName: "mintItem",
     args: avatar ? [name].concat(Object.values(avatar)) : [],
   });
+
+  const { data: w1r } = useWaitForTransaction({
+    hash: w1d?.hash,
+  });
+
+  useEffect(() => {
+    if (w1r !== undefined) {
+      router.push("/");
+    }
+  }, [w1r]);
 
   const { data: oldAvatarFetched } = useScaffoldContractRead({
     contractName: "Pixters",
@@ -51,11 +62,21 @@ const Edit: NextPage = () => {
     return args;
   };
 
-  const { writeAsync: w2 } = useScaffoldContractWrite({
+  const { data: w2d, writeAsync: w2 } = useScaffoldContractWrite({
     contractName: "Pixters",
     functionName: "editAvatar",
     args: generateArgs(),
   });
+
+  const { data: w2r } = useWaitForTransaction({
+    hash: w2d?.hash,
+  });
+
+  useEffect(() => {
+    if (w2r !== undefined) {
+      router.push("/");
+    }
+  }, [w2r]);
 
   useEffect(() => {
     if (tokenId === "0" && avatar == undefined) {
