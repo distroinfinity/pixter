@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import Avatar from "avataaars";
 import { ethers } from "ethers";
@@ -67,6 +68,17 @@ const Home: NextPage = () => {
     }
   }, [writeDisabled]);
 
+  const handleTweet = (id: any) => {
+    console.log("id tweet", id);
+    const link1 = `${openseaBaseURL + id}`;
+    const link2 = "https://pixster.vercel.app/";
+    const text = `Checkout my coolest Avatar at: ${link1}\nMint yours at: ${link2}`;
+
+    const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+
+    window.open(tweetUrl, "_blank");
+  };
+
   return (
     <>
       <Head>
@@ -92,21 +104,30 @@ const Home: NextPage = () => {
             {!loading ? (
               avatars?.map((avatar, index) => {
                 return (
-                  <div className="mx-auto my-0 mt-10 lg:mx-4" key={index}>
+                  <div className=" mx-auto my-0 mt-10 lg:mx-4" key={index}>
                     <div className="card card-compact w-11/12 lg:w-80 bg-base-100 shadow-xl p-3 items-center ml-3 lg:m-0">
                       <Avatar {...avatar["avatar"]} />
                       <h2 className="text-2xl font-bold mt-4">{avatar["name"]}</h2>
-                      <div className="my-2">
+                      <div className="my-2 flex">
                         <a target="_blank" href={`${openseaBaseURL + avatar["id"]}`}>
                           <button className="btn btn-outline btn-info gap-2 mr-2">
-                            <ArrowTopRightOnSquareIcon className="h-4 w-4" /> Opensea
+                            <ArrowTopRightOnSquareIcon className="h-3 w-3" /> Opensea
                           </button>
                         </a>
                         <Link href={`/edit/${avatar["id"]}`}>
                           <button className="btn btn-outline btn-success gap-2 ml-2">
-                            <PencilSquareIcon className="h-4 w-4" /> Edit
+                            <PencilSquareIcon className="h-3 w-3" /> Edit
                           </button>
                         </Link>
+
+                        <button
+                          onClick={() => {
+                            handleTweet(avatar["id"]);
+                          }}
+                          className="btn btn-outline btn-success gap-2 ml-2"
+                        >
+                          <Image width={25} height={25} src={"/twitter.png"}></Image>
+                        </button>
                       </div>
                     </div>
                   </div>
