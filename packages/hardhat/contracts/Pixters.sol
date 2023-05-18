@@ -142,6 +142,19 @@ contract Pixters is ERC721, Ownable {
     }
   }
 
+  function myAvatars(address _addr) public view returns (uint256[] memory) {
+    uint256[] memory myAvatarsArr = new uint256[](balanceOf(_addr));
+    // console.log("token count", balanceOf(msg.sender), _addr);
+    uint256 index = 0;
+    for (uint256 i = 1; i <= _tokenIds.current(); i++) {
+      if (ownerOf(i) == msg.sender) {
+        myAvatarsArr[index] = i;
+        index++;
+      }
+    }
+    return myAvatarsArr;
+  }
+
   function getQueryString(uint256 id) private view returns (string memory) {
     string memory queryParams = string(
       abi.encodePacked(

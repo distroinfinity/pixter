@@ -5,7 +5,7 @@ const contracts = {
       chainId: "31337",
       contracts: {
         Pixters: {
-          address: "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+          address: "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
           abi: [
             {
               inputs: [
@@ -153,6 +153,94 @@ const contracts = {
               inputs: [
                 {
                   internalType: "uint256",
+                  name: "_id",
+                  type: "uint256",
+                },
+                {
+                  internalType: "string",
+                  name: "name",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "avatarStyle",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "skinColor",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "topType",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "hatColor",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "hairColor",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "eyebrowType",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "eyeType",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "accessoriesType",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "mouthType",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "facialHairType",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "facialHairColor",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "clotheType",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "clotheColor",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "graphicType",
+                  type: "string",
+                },
+              ],
+              name: "editAvatar",
+              outputs: [],
+              stateMutability: "nonpayable",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "uint256",
                   name: "tokenId",
                   type: "uint256",
                 },
@@ -195,13 +283,13 @@ const contracts = {
             {
               inputs: [
                 {
-                  internalType: "uint256",
-                  name: "id",
-                  type: "uint256",
+                  internalType: "string",
+                  name: "name",
+                  type: "string",
                 },
                 {
                   internalType: "string",
-                  name: "name",
+                  name: "avatarStyle",
                   type: "string",
                 },
                 {
@@ -279,6 +367,19 @@ const contracts = {
                 },
               ],
               stateMutability: "nonpayable",
+              type: "function",
+            },
+            {
+              inputs: [],
+              name: "myAvatars",
+              outputs: [
+                {
+                  internalType: "uint256[]",
+                  name: "",
+                  type: "uint256[]",
+                },
+              ],
+              stateMutability: "view",
               type: "function",
             },
             {
