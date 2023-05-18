@@ -83,7 +83,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Pixter: Home</title>
-        <meta name="description" content="Create your very own Web3 Avatar" />
+        <meta name="description" content="Create your very own NFT Avatars" />
         <link rel="shortcut icon" href="/pixters.png" />
       </Head>
 

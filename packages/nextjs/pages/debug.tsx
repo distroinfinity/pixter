@@ -13,9 +13,8 @@ const Debug: NextPage = () => {
     <>
       <Head>
         <title>Pixter: Debug</title>
-        <meta name="description" content="Create your very own Web3 Avatar" />
+        <meta name="description" content="Create your very own NFT Avatars" />
         <link rel="shortcut icon" href="/pixters.png" />
-
       </Head>
 
       <div className="flex flex-col gap-y-6 lg:gap-y-8 py-8 lg:py-12 justify-center items-center">
