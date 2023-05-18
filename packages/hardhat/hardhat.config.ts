@@ -24,7 +24,7 @@ const config: HardhatUserConfig = {
       viaIR: true,
     },
   },
-  defaultNetwork: "localhost",
+  defaultNetwork: "polygonMumbai",
 
   namedAccounts: {
     deployer: {
