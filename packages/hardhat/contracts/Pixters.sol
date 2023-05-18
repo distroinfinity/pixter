@@ -8,8 +8,6 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 import "base64-sol/base64.sol";
 import "./HexStrings.sol";
 
-import "hardhat/console.sol";
-
 contract Pixters is ERC721, Ownable {
   using Strings for uint256;
   using HexStrings for uint160;
@@ -144,10 +142,10 @@ contract Pixters is ERC721, Ownable {
 
   function myAvatars(address _addr) public view returns (uint256[] memory) {
     uint256[] memory myAvatarsArr = new uint256[](balanceOf(_addr));
-    // console.log("token count", balanceOf(msg.sender), _addr);
+
     uint256 index = 0;
     for (uint256 i = 1; i <= _tokenIds.current(); i++) {
-      if (ownerOf(i) == msg.sender) {
+      if (ownerOf(i) == _addr) {
         myAvatarsArr[index] = i;
         index++;
       }
@@ -192,7 +190,6 @@ contract Pixters is ERC721, Ownable {
   }
 
   function getAttributes(uint256 id) private view returns (string memory) {
-    // adding a handful of them, baad mai fix it
     string memory attributes = string(
       abi.encodePacked(
         '{ "trait_type": "avatarStyle", "value" :"',

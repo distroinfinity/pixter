@@ -124,6 +124,7 @@ const Edit: NextPage = () => {
       <Head>
         <title>Pixter: Edit</title>
         <meta name="description" content="Create your very own Web3 Avatar" />
+        <link rel="shortcut icon" href="/pixters.jpeg" />
       </Head>
 
       <div className="flex flex-col items-center w-full">

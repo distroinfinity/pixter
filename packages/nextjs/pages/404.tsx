@@ -7,6 +7,8 @@ const PageNotFound: NextPage = () => {
       <Head>
         <title>Pixter: 404</title>
         <meta name="description" content="Create your very own Web3 Avatar" />
+        <link rel="shortcut icon" href="/pixters.jpeg" />
+
       </Head>
 
       <div className="text-3xl mx-auto mt-8">PAGE NOT FOUND!</div>

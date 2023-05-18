@@ -8,24 +8,25 @@ import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
 const Home: NextPage = () => {
   // Just for testing
 
-  const response = useScaffoldContractRead({
-    contractName: "Pixters",
-    functionName: "tokenURI",
-    args: [1],
-  });
-  const tokenURI = response.data;
-  console.log("return", tokenURI);
-  if (!tokenURI) return;
-  const jsonManifestString = atob(tokenURI.substring(29));
-  console.log("jsonManifestString", jsonManifestString);
-  const jsonManifest = JSON.parse(jsonManifestString);
-  console.log("jsonManifest", jsonManifest);
+  // const response = useScaffoldContractRead({
+  //   contractName: "Pixters",
+  //   functionName: "tokenURI",
+  //   args: [1],
+  // });
+  // const tokenURI = response.data;
+  // console.log("return", tokenURI);
+  // if (!tokenURI) return;
+  // const jsonManifestString = atob(tokenURI.substring(29));
+  // console.log("jsonManifestString", jsonManifestString);
+  // const jsonManifest = JSON.parse(jsonManifestString);
+  // console.log("jsonManifest", jsonManifest);
 
   return (
     <>
       <Head>
         <title>Pixter: Home</title>
         <meta name="description" content="Create your very own Web3 Avatar" />
+        <link rel="shortcut icon" href="/pixters.jpeg" />
       </Head>
 
       <Link href="/edit/0" className="mt-8 mx-auto">
