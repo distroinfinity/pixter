@@ -142,7 +142,6 @@ contract Pixters is ERC721, Ownable {
 
   function myAvatars(address _addr) public view returns (uint256[] memory) {
     uint256[] memory myAvatarsArr = new uint256[](balanceOf(_addr));
-
     uint256 index = 0;
     for (uint256 i = 1; i <= _tokenIds.current(); i++) {
       if (ownerOf(i) == _addr) {
