@@ -126,7 +126,9 @@ const Edit: NextPage = () => {
         ) : (
           <div className="mt-4 animate-pulse bg-[#7f7f7f30] rounded-full h-[48px] w-[94px]"></div>
         )}
-        <div className="mt-6 px-3 w-full">{avatar ? <Pallette avatar={avatar} setAvatar={setAvatar} /> : ""}</div>
+        <div className="mt-6 px-3 w-full">
+          <Pallette avatar={avatar} setAvatar={setAvatar} />
+        </div>
       </div>
     </>
   );

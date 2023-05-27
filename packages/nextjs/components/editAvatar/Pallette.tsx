@@ -1,24 +1,42 @@
 import { useState } from "react";
 import { Tab } from "./Tab";
 
+const tabs = [
+  ["Skin", "Skin"],
+  ["Hair", "Hair"],
+  ["HairColor", "HairColor"],
+  ["Eyebrow", "Eyebrow"],
+  ["Eyes", "Eyes"],
+  ["EyeWear", "EyeWear"],
+  ["Mouth", "Mouth"],
+  ["FacialHair", "FacialHair"],
+  ["FacialHairColor", "FacialHairColor"],
+  ["Clothes", "Clothes"],
+  ["ClotheColor", "ClotheColor"],
+  ["Graphics", "Graphics"],
+  ["Accessories", "Accessories"],
+  ["AccessoriesColor", "AccessoriesColor"],
+];
+
 export const Pallette = ({ avatar, setAvatar }) => {
-  const tabs = [
-    ["Skin", "Skin"],
-    ["Hair", "Hair"],
-    ["HairColor", "HairColor"],
-    ["Eyebrow", "Eyebrow"],
-    ["Eyes", "Eyes"],
-    ["EyeWear", "EyeWear"],
-    ["Mouth", "Mouth"],
-    ["FacialHair", "FacialHair"],
-    ["FacialHairColor", "FacialHairColor"],
-    ["Clothes", "Clothes"],
-    ["ClotheColor", "ClotheColor"],
-    ["Graphics", "Graphics"],
-    ["Accessories", "Accessories"],
-    ["AccessoriesColor", "AccessoriesColor"],
-  ];
   const [activeTab, setActiveTab] = useState("Skin");
+
+  if (avatar === undefined) {
+    return (
+      <>
+        <div className="tabs w-full flex-nowrap overflow-scroll lg:overflow-hidden">
+          {tabs.map((tab, index) => {
+            return (
+              <a key={index} className="tab flex-grow hover:cursor-default">
+                <div className="animate-pulse bg-[#7f7f7f30] rounded-lg h-[22px] w-[124px]"></div>
+              </a>
+            );
+          })}
+        </div>
+        <Tab activeTab={activeTab} avatar={avatar} setAvatar={setAvatar} />
+      </>
+    );
+  }
 
   return (
     <>

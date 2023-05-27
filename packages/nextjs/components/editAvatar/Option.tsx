@@ -1,22 +1,26 @@
 import Avatar from "avataaars";
 
+const tabToProp = {
+  Skin: "skinColor",
+  Hair: "topType",
+  HairColor: "hairColor",
+  Eyebrow: "eyebrowType",
+  Eyes: "eyeType",
+  EyeWear: "accessoriesType",
+  Mouth: "mouthType",
+  FacialHair: "facialHairType",
+  FacialHairColor: "facialHairColor",
+  Clothes: "clotheType",
+  ClotheColor: "clotheColor",
+  Graphics: "graphicType",
+  Accessories: "topType",
+  AccessoriesColor: "hatColor",
+};
+
 export const Option = ({ option, activeTab, avatar, setAvatar }) => {
-  const tabToProp = {
-    Skin: "skinColor",
-    Hair: "topType",
-    HairColor: "hairColor",
-    Eyebrow: "eyebrowType",
-    Eyes: "eyeType",
-    EyeWear: "accessoriesType",
-    Mouth: "mouthType",
-    FacialHair: "facialHairType",
-    FacialHairColor: "facialHairColor",
-    Clothes: "clotheType",
-    ClotheColor: "clotheColor",
-    Graphics: "graphicType",
-    Accessories: "topType",
-    AccessoriesColor: "hatColor",
-  };
+  if (avatar === undefined) {
+    return <div className="animate-pulse bg-[#7f7f7f30] rounded-[12px] h-[166px] w-[166px] m-2"></div>;
+  }
 
   const newProps = { ...avatar, [tabToProp[activeTab]]: option };
 
