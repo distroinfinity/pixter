@@ -20,7 +20,7 @@ const Edit: NextPage = () => {
   const { data: oldAvatarFetched } = useScaffoldContractRead({
     contractName: "Pixters",
     functionName: "tokenURI",
-    args: tokenId ? tokenId : [],
+    args: tokenId ? [tokenId] : [],
   });
 
   const generateArgs = () => {
