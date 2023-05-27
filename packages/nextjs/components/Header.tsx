@@ -18,7 +18,7 @@ export const Header = () => {
           </div>
         </Link>
       </div>
-      <div className="navbar-end flex-grow mr-4">
+      <div className="navbar-end flex-grow lg:mr-4">
         <RainbowKitCustomConnectButton />
         <FaucetButton />
       </div>
