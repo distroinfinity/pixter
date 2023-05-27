@@ -47,8 +47,8 @@ const Home: NextPage = () => {
         const data = JSON.parse(atob(rawData.substring(29)));
         newAvatar["name"] = data["name"];
         const obj = {};
-        data["attributes"].map(att => {
-          obj[att["trait_type"]] = att["value"];
+        data["attributes"].map(attribute => {
+          obj[attribute["trait_type"]] = attribute["value"];
         });
         newAvatar["avatar"] = obj;
         newAvatars.push(newAvatar);
@@ -90,7 +90,7 @@ const Home: NextPage = () => {
           Mint New Avatar ✨
         </button>
       ) : (
-        <Link href="/edit/0" className="mt-8 mx-auto">
+        <Link href="/mint" className="mt-8 mx-auto">
           <button className="btn btn-secondary">Mint New Avatar ✨</button>
         </Link>
       )}
@@ -124,7 +124,7 @@ const Home: NextPage = () => {
                           }}
                           className="btn btn-outline ml-2"
                         >
-                          <Image width={25} height={25} src={"/twitter.png"}></Image>
+                          <Image width={25} height={25} src={"/twitter.png"} alt="twitter logo"></Image>
                         </button>
                       </div>
                     </div>
