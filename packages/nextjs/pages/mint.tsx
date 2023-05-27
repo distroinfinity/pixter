@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Avatar from "avataaars";
 import type { NextPage } from "next";
-import { useWaitForTransaction } from "wagmi";
 import { Pallette } from "~~/components/editAvatar/Pallette";
 import { useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
@@ -33,17 +32,10 @@ const Mint: NextPage = () => {
     contractName: "Pixters",
     functionName: "mintItem",
     args: avatar ? [name].concat(Object.values(avatar)) : [],
-  });
-
-  const { data: w1r } = useWaitForTransaction({
-    hash: w1d?.hash,
-  });
-
-  useEffect(() => {
-    if (w1r !== undefined) {
+    onBlockConfirmation: () => {
       router.push("/");
-    }
-  }, [w1r]);
+    },
+  });
 
   return (
     <>

@@ -3,7 +3,6 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import Avatar from "avataaars";
 import type { NextPage } from "next";
-import { useWaitForTransaction } from "wagmi";
 import { Pallette } from "~~/components/editAvatar/Pallette";
 import { useScaffoldContractRead, useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
@@ -47,17 +46,10 @@ const Edit: NextPage = () => {
     contractName: "Pixters",
     functionName: "editAvatar",
     args: generateArgs(),
-  });
-
-  const { data: w1r } = useWaitForTransaction({
-    hash: w1d?.hash,
-  });
-
-  useEffect(() => {
-    if (w1r !== undefined) {
+    onBlockConfirmation: () => {
       router.push("/");
-    }
-  }, [w1r]);
+    },
+  });
 
   useEffect(() => {
     if (oldAvatarFetched) {

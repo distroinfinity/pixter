@@ -1,3 +1,4 @@
+import { TransactionReceipt } from "@ethersproject/abstract-provider";
 import { Abi, AbiParametersToPrimitiveTypes, ExtractAbiEvent, ExtractAbiEventNames, ExtractAbiFunction } from "abitype";
 import type { ExtractAbiFunctionNames } from "abitype";
 import { UseContractEventConfig, UseContractReadConfig, UseContractWriteConfig } from "wagmi";
@@ -144,6 +145,8 @@ export type UseScaffoldWriteConfig<
 > = {
   contractName: TContractName;
   value?: string;
+  onBlockConfirmation?: (txnReceipt: TransactionReceipt) => void;
+  blockConfirmations?: number;
 } & IsContractsFileMissing<
   Partial<UseContractWriteConfig> & { args?: unknown[] },
   {
