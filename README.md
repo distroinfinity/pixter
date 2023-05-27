@@ -52,14 +52,14 @@ yarn start
 
 ### Desktop
 
-![Desktop Home Page](screenshots/ss3.png)
+![Desktop Home Page](screenshots/ss1.png)
 ---
 
-![Desktop Edit Page](screenshots/ss1.png)
+![Desktop Edit Page](screenshots/ss2.png)
 
 ### Mobile Devices
 
-| ![Mobile Home Page](screenshots/ss4.png) | ![Mobile Edit Page](screenshots/ss2.png) |
+| ![Mobile Home Page](screenshots/ss3.png) | ![Mobile Edit Page](screenshots/ss4.png) |
 |---|---|
 
 ### Original Avatar Design Credits
