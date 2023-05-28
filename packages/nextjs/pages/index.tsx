@@ -135,35 +135,35 @@ const Home: NextPage = () => {
             ) : (
               <>
                 <div className=" mx-auto my-0 mt-10 lg:mx-4">
-                  <div className="card card-compact w-11/12 lg:w-80 bg-base-100 shadow-xl p-3 items-center ml-3 lg:m-0">
+                  <div className="card card-compact w-80 bg-base-100 shadow-xl p-3 items-center ml-3 lg:m-0">
                     <div className="animate-pulse bg-[#7f7f7f30] rounded-2xl h-[256px] w-[224px] mt-[22px]"></div>
                     <div className="mt-4 animate-pulse bg-[#7f7f7f30] rounded-2xl h-[40px] w-[124px]"></div>
-                    <div className="my-2 flex">
-                      <div className="mt-2 animate-pulse bg-[#7f7f7f30] rounded-full h-[46px] w-[104px] mr-2"></div>
-                      <div className="mt-2 animate-pulse bg-[#7f7f7f30] rounded-full h-[46px] w-[84px] ml-2 mr-2"></div>
-                      <div className="mt-2 animate-pulse bg-[#7f7f7f30] rounded-full h-[46px] w-[60px] ml-2"></div>
+                    <div className="my-2 w-full flex justify-evenly">
+                      <div className="mt-2 animate-pulse bg-[#7f7f7f30] rounded-full h-[46px] w-[104px]"></div>
+                      <div className="mt-2 animate-pulse bg-[#7f7f7f30] rounded-full h-[46px] w-[84px]"></div>
+                      <div className="mt-2 animate-pulse bg-[#7f7f7f30] rounded-full h-[46px] w-[60px]"></div>
                     </div>
                   </div>
                 </div>
                 <div className=" mx-auto my-0 mt-10 lg:mx-4">
-                  <div className="card card-compact w-11/12 lg:w-80 bg-base-100 shadow-xl p-3 items-center ml-3 lg:m-0">
+                  <div className="card card-compact w-80 bg-base-100 shadow-xl p-3 items-center ml-3 lg:m-0">
                     <div className="animate-pulse bg-[#7f7f7f30] rounded-2xl h-[256px] w-[224px] mt-[22px]"></div>
                     <div className="mt-4 animate-pulse bg-[#7f7f7f30] rounded-2xl h-[40px] w-[124px]"></div>
-                    <div className="my-2 flex">
-                      <div className="mt-2 animate-pulse bg-[#7f7f7f30] rounded-full h-[46px] w-[104px] mr-2"></div>
-                      <div className="mt-2 animate-pulse bg-[#7f7f7f30] rounded-full h-[46px] w-[84px] ml-2 mr-2"></div>
-                      <div className="mt-2 animate-pulse bg-[#7f7f7f30] rounded-full h-[46px] w-[60px] ml-2"></div>
+                    <div className="my-2 w-full flex justify-evenly">
+                      <div className="mt-2 animate-pulse bg-[#7f7f7f30] rounded-full h-[46px] w-[104px]"></div>
+                      <div className="mt-2 animate-pulse bg-[#7f7f7f30] rounded-full h-[46px] w-[84px]"></div>
+                      <div className="mt-2 animate-pulse bg-[#7f7f7f30] rounded-full h-[46px] w-[60px]"></div>
                     </div>
                   </div>
                 </div>
                 <div className=" mx-auto my-0 mt-10 lg:mx-4">
-                  <div className="card card-compact w-11/12 lg:w-80 bg-base-100 shadow-xl p-3 items-center ml-3 lg:m-0">
+                  <div className="card card-compact w-80 bg-base-100 shadow-xl p-3 items-center ml-3 lg:m-0">
                     <div className="animate-pulse bg-[#7f7f7f30] rounded-2xl h-[256px] w-[224px] mt-[22px]"></div>
                     <div className="mt-4 animate-pulse bg-[#7f7f7f30] rounded-2xl h-[40px] w-[124px]"></div>
-                    <div className="my-2 flex">
-                      <div className="mt-2 animate-pulse bg-[#7f7f7f30] rounded-full h-[46px] w-[104px] mr-2"></div>
-                      <div className="mt-2 animate-pulse bg-[#7f7f7f30] rounded-full h-[46px] w-[84px] ml-2 mr-2"></div>
-                      <div className="mt-2 animate-pulse bg-[#7f7f7f30] rounded-full h-[46px] w-[60px] ml-2"></div>
+                    <div className="my-2 w-full flex justify-evenly">
+                      <div className="mt-2 animate-pulse bg-[#7f7f7f30] rounded-full h-[46px] w-[104px]"></div>
+                      <div className="mt-2 animate-pulse bg-[#7f7f7f30] rounded-full h-[46px] w-[84px]"></div>
+                      <div className="mt-2 animate-pulse bg-[#7f7f7f30] rounded-full h-[46px] w-[60px]"></div>
                     </div>
                   </div>
                 </div>
