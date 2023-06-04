@@ -6,9 +6,11 @@ Pixters gives you the freedom to mint an avatar just once and keep on customisin
 
 Currently Pixters is live on Polygon & Polygon Mumbai 🚀
 
-It is built using [scaffold-eth 2 🏗️](https://github.com/scaffold-eth/scaffold-eth-2)
+It is built using [scaffold-eth 2 🏗️](https://github.com/scaffold-eth/scaffold-eth-2)  
 
 ## Relevant Links
+
+Short video explanation: [Introducing Pixters ✨](https://youtu.be/cBzQLe4X-kM)
 
 ### Polygon
 
