@@ -19,7 +19,7 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
 
   const provider = new ethers.providers.JsonRpcProvider(
-    "https://polygon-mumbai.g.alchemy.com/v2/" + scaffoldConfig.alchemyApiKey,
+    "https://polygon-mainnet.g.alchemy.com/v2/" + scaffoldConfig.alchemyApiKey,
   );
   const providerContract = new ethers.Contract(
     contracts[scaffoldConfig.targetNetwork.id][0]["contracts"]["Pixters"]["address"],
@@ -30,7 +30,7 @@ const Home: NextPage = () => {
   const isWalletReady = chain && chain?.id === getTargetNetwork().id;
 
   const openseaBaseURL =
-    "https://testnets.opensea.io/assets/mumbai/" +
+    "https://opensea.io/assets/matic/" +
     contracts[scaffoldConfig.targetNetwork.id][0]["contracts"]["Pixters"]["address"] +
     "/";
 
