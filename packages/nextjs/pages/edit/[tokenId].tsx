@@ -2,47 +2,49 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Avatar from "avataaars";
+import { BigNumber } from "ethers";
 import type { NextPage } from "next";
 import { Pallette } from "~~/components/editAvatar/Pallette";
 import { useScaffoldContractRead, useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
+import { IAvatar, IOldAvatarDetails, TAvatarProperties, TEditAvatarArgs } from "~~/types/custom";
 import { notification } from "~~/utils/scaffold-eth";
 
 const Edit: NextPage = () => {
   const router = useRouter();
   const { tokenId } = router.query;
 
-  const [avatar, setAvatar] = useState();
+  const [avatar, setAvatar] = useState<IAvatar>();
   const [name, setName] = useState("");
 
-  const [oldAvatarDetails, setOldAvatarDetails] = useState();
+  const [oldAvatarDetails, setOldAvatarDetails] = useState<IOldAvatarDetails>();
 
   const { data: oldAvatarFetched } = useScaffoldContractRead({
     contractName: "Pixters",
     functionName: "tokenURI",
-    args: tokenId ? [tokenId] : [],
+    args: tokenId ? [BigNumber.from(tokenId)] : [undefined],
   });
 
   const generateArgs = () => {
     const args = [];
     if (oldAvatarDetails) {
-      args.push(oldAvatarDetails["id"]);
+      args.push(BigNumber.from(oldAvatarDetails["id"]));
       if (oldAvatarDetails["name"] === name) {
         args.push("");
       } else {
         args.push(name);
       }
       for (const key in avatar) {
-        if (oldAvatarDetails["avatar"][key] === avatar[key]) {
+        if (oldAvatarDetails["avatar"]?.[key as TAvatarProperties] === avatar[key as TAvatarProperties]) {
           args.push("");
         } else {
-          args.push(avatar[key]);
+          args.push(avatar[key as TAvatarProperties]);
         }
       }
     }
-    return args;
+    return args as TEditAvatarArgs;
   };
 
-  const { data: w1d, writeAsync: w1 } = useScaffoldContractWrite({
+  const { writeAsync: w1 } = useScaffoldContractWrite({
     contractName: "Pixters",
     functionName: "editAvatar",
     args: generateArgs(),
@@ -54,15 +56,30 @@ const Edit: NextPage = () => {
   useEffect(() => {
     if (oldAvatarFetched) {
       const data = JSON.parse(atob(oldAvatarFetched.substring(29)));
-      const obj = {};
-      data["attributes"].map(attribute => {
-        obj[attribute["trait_type"]] = attribute["value"];
+      const obj: IAvatar = {
+        avatarStyle: "Transparent",
+        skinColor: "Light",
+        topType: "NoHair",
+        hatColor: "Black",
+        hairColor: "BrownDark",
+        eyebrowType: "Default",
+        eyeType: "Default",
+        accessoriesType: "Blank",
+        mouthType: "Default",
+        facialHairType: "Blank",
+        facialHairColor: "BrownDark",
+        clotheType: "ShirtCrewNeck",
+        clotheColor: "Black",
+        graphicType: "Bat",
+      };
+      data["attributes"].map((attribute: { trait_type: string; value: string }) => {
+        obj[attribute["trait_type"] as TAvatarProperties] = attribute["value"];
       });
-      setOldAvatarDetails({ id: tokenId, name: data["name"], avatar: obj });
+      setOldAvatarDetails({ id: tokenId as string, name: data["name"], avatar: obj });
       setName(data["name"]);
       setAvatar(obj);
     }
-  }, [oldAvatarFetched]);
+  }, [oldAvatarFetched, tokenId]);
 
   return (
     <>
@@ -91,7 +108,7 @@ const Edit: NextPage = () => {
                 setName(e.target.value);
               }}
             />
-            {oldAvatarDetails["name"] === name ? (
+            {oldAvatarDetails?.["name"] === name ? (
               ""
             ) : (
               <p className="text-xs m-0 mt-2 ml-4 flex gap-1">

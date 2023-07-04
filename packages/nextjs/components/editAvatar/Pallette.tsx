@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Tab } from "./Tab";
+import { IAvatar, TActiveTab } from "~~/types/custom";
 
 const tabs = [
   ["Skin", "Skin"],
@@ -18,8 +19,14 @@ const tabs = [
   ["AccessoriesColor", "AccessoriesColor"],
 ];
 
-export const Pallette = ({ avatar, setAvatar }) => {
-  const [activeTab, setActiveTab] = useState("Skin");
+export const Pallette = ({
+  avatar,
+  setAvatar,
+}: {
+  avatar: IAvatar | undefined;
+  setAvatar: Dispatch<SetStateAction<IAvatar | undefined>>;
+}) => {
+  const [activeTab, setActiveTab] = useState<TActiveTab>("Skin");
 
   if (avatar === undefined) {
     return (
@@ -73,7 +80,7 @@ export const Pallette = ({ avatar, setAvatar }) => {
               <a
                 key={index}
                 className={`tab tab-bordered flex-grow ${activeTab === tab[0] ? "tab-active" : ""}`}
-                onClick={() => setActiveTab(tab[0])}
+                onClick={() => setActiveTab(tab[0] as TActiveTab)}
               >
                 {tab[1]}
               </a>

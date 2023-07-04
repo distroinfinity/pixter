@@ -1,4 +1,6 @@
+import { Dispatch, SetStateAction } from "react";
 import { Option } from "./Option";
+import { IAvatar, TActiveTab } from "~~/types/custom";
 
 const options = {
   Skin: ["Light", "Pale", "Brown", "DarkBrown", "Black", "Tanned", "Yellow"],
@@ -147,10 +149,18 @@ const options = {
   ],
 };
 
-export const Tab = ({ activeTab, avatar, setAvatar }) => {
+export const Tab = ({
+  activeTab,
+  avatar,
+  setAvatar,
+}: {
+  activeTab: TActiveTab;
+  avatar: IAvatar | undefined;
+  setAvatar: Dispatch<SetStateAction<IAvatar | undefined>>;
+}) => {
   return (
     <div className="flex flex-wrap justify-center my-3">
-      {options[activeTab].map((option, index) => (
+      {options[activeTab].map((option: string, index: number) => (
         <Option key={index} option={option} activeTab={activeTab} avatar={avatar} setAvatar={setAvatar} />
       ))}
     </div>

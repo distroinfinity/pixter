@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Avatar from "avataaars";
 import type { NextPage } from "next";
 import { Pallette } from "~~/components/editAvatar/Pallette";
 import { useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
+import { IAvatar, TMintItemArgs } from "~~/types/custom";
 import { notification } from "~~/utils/scaffold-eth";
 
 const Mint: NextPage = () => {
   const router = useRouter();
 
-  const [avatar, setAvatar] = useState({
+  const [avatar, setAvatar] = useState<IAvatar>({
     avatarStyle: "Transparent",
     skinColor: "Light",
     topType: "NoHair",
@@ -28,10 +29,12 @@ const Mint: NextPage = () => {
   });
   const [name, setName] = useState("");
 
-  const { data: w1d, writeAsync: w1 } = useScaffoldContractWrite({
+  const { writeAsync: w1 } = useScaffoldContractWrite({
     contractName: "Pixters",
     functionName: "mintItem",
-    args: avatar ? [name].concat(Object.values(avatar)) : [],
+    args: avatar
+      ? ([name].concat(Object.values(avatar)) as TMintItemArgs)
+      : ["", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
     onBlockConfirmation: () => {
       router.push("/");
     },
@@ -75,7 +78,7 @@ const Mint: NextPage = () => {
           Mint ✨
         </button>
         <div className="mt-6 px-3 w-full">
-          <Pallette avatar={avatar} setAvatar={setAvatar} />
+          <Pallette avatar={avatar} setAvatar={setAvatar as Dispatch<SetStateAction<IAvatar | undefined>>} />
         </div>
       </div>
     </>

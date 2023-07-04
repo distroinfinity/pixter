@@ -8,6 +8,7 @@ import type { NextPage } from "next";
 import { useAccount, useNetwork } from "wagmi";
 import { ArrowTopRightOnSquareIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
 import scaffoldConfig from "~~/scaffold.config";
+import { IAvatar, IOldAvatarDetails, TAvatarProperties } from "~~/types/custom";
 import { getTargetNetwork } from "~~/utils/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 import { contracts } from "~~/utils/scaffold-eth/contract";
@@ -15,15 +16,15 @@ import { contracts } from "~~/utils/scaffold-eth/contract";
 const Home: NextPage = () => {
   const { chain } = useNetwork();
   const { address } = useAccount();
-  const [avatars, setAvatars] = useState();
+  const [avatars, setAvatars] = useState<IOldAvatarDetails[]>();
   const [loading, setLoading] = useState(false);
 
   const provider = new ethers.providers.JsonRpcProvider(
     "https://polygon-mainnet.g.alchemy.com/v2/" + scaffoldConfig.alchemyApiKey,
   );
   const providerContract = new ethers.Contract(
-    contracts[scaffoldConfig.targetNetwork.id][0]["contracts"]["Pixters"]["address"],
-    contracts[scaffoldConfig.targetNetwork.id][0]["contracts"]["Pixters"]["abi"],
+    contracts?.[scaffoldConfig.targetNetwork.id][0]["contracts"]["Pixters"]["address"] ?? "",
+    contracts?.[scaffoldConfig.targetNetwork.id][0]["contracts"]["Pixters"]["abi"] as any,
     provider,
   );
 
@@ -31,7 +32,7 @@ const Home: NextPage = () => {
 
   const openseaBaseURL =
     "https://opensea.io/assets/matic/" +
-    contracts[scaffoldConfig.targetNetwork.id][0]["contracts"]["Pixters"]["address"] +
+    contracts?.[scaffoldConfig.targetNetwork.id][0]["contracts"]["Pixters"]["address"] +
     "/";
 
   const getAvatars = async () => {
@@ -41,14 +42,29 @@ const Home: NextPage = () => {
 
       const newAvatars = [];
       for (const id in ids) {
-        const newAvatar = {};
-        newAvatar["id"] = parseInt(ids[id]);
+        const newAvatar: IOldAvatarDetails = { id: undefined, name: undefined, avatar: undefined };
+        newAvatar["id"] = parseInt(ids[id]).toString();
         const rawData = await providerContract.tokenURI(newAvatar["id"]);
         const data = JSON.parse(atob(rawData.substring(29)));
         newAvatar["name"] = data["name"];
-        const obj = {};
-        data["attributes"].map(attribute => {
-          obj[attribute["trait_type"]] = attribute["value"];
+        const obj: IAvatar = {
+          avatarStyle: "Transparent",
+          skinColor: "Light",
+          topType: "NoHair",
+          hatColor: "Black",
+          hairColor: "BrownDark",
+          eyebrowType: "Default",
+          eyeType: "Default",
+          accessoriesType: "Blank",
+          mouthType: "Default",
+          facialHairType: "Blank",
+          facialHairColor: "BrownDark",
+          clotheType: "ShirtCrewNeck",
+          clotheColor: "Black",
+          graphicType: "Bat",
+        };
+        data["attributes"].map((attribute: { trait_type: string; value: string }) => {
+          obj[attribute["trait_type"] as TAvatarProperties] = attribute["value"];
         });
         newAvatar["avatar"] = obj;
         newAvatars.push(newAvatar);
@@ -67,7 +83,7 @@ const Home: NextPage = () => {
     }
   }, [isWalletReady]);
 
-  const handleTweet = (id: any) => {
+  const handleTweet = (id: string | undefined) => {
     const link1 = `${openseaBaseURL + id}`;
     const link2 = "https://pixters.vercel.app/";
     const text = `Checkout my new avatar ✨: ${link1}\n\nMint yours at ${link2}`;
@@ -104,7 +120,7 @@ const Home: NextPage = () => {
                 return (
                   <div className="mx-auto my-0 mt-10 lg:mx-4" key={index}>
                     <div className="card card-compact w-80 bg-base-100 shadow-xl p-3 items-center lg:m-0">
-                      <Avatar {...avatar["avatar"]} />
+                      <Avatar {...(avatar["avatar"] as IAvatar)} />
                       <h2 className="text-2xl font-bold mt-4">{avatar["name"]}</h2>
                       <div className="my-2 w-full flex justify-evenly">
                         <a target="_blank" href={`${openseaBaseURL + avatar["id"]}`}>
